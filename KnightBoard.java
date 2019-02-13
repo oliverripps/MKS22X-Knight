@@ -1,6 +1,10 @@
 public class KnightBoard{
   int[][] moves;
   int[][] board;
+  int knightxcor;
+  int knightycor;
+  int counter;
+
   public KnightBoard(int startingRows,int startingCols){
     int[][] b = new int[startingRows][startingCols];
     board=b;
@@ -29,6 +33,24 @@ public class KnightBoard{
     }
     return str;
   }
+  }
+
+  public boolean place(int x, int y){
+    knightxcor=x;
+    knightycor=y;
+    board[x][y]=1;
+    counter=1;
+  }
+  public boolean move(int i){
+    if(i<1 || i>8){
+      return false;
+    }
+    if(i==1){
+      board[knightycor-2][knightxcor+1]=counter+1;
+      counter++;
+      knightycor-=2;
+      knightxcor+=1;
+    }
   }
 
   /*see format for toString below
