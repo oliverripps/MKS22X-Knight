@@ -51,6 +51,7 @@ public class KnightBoard{
     }
     return true;
   }
+
   public boolean move(int i) throws IllegalArgumentException(){
     if(i<1 || i>8){
       return false;
@@ -66,44 +67,49 @@ public class KnightBoard{
     catch(IllegalArgumentException e){
       return false;
     }
-
-    if(i==4 && board[knightycor+2][knightxcor+1]==0){
-      board[knightycor+2][knightxcor+1]=counter+1;
-      counter++;
-      knightycor+=2;
-      knightxcor+=1;
+    try{
+      if(i==4 && board[knightycor+2][knightxcor+1]==0){
+        board[knightycor+2][knightxcor+1]=counter+1;
+        counter++;
+        knightycor+=2;
+        knightxcor+=1;
     }
-    if(i==5){
+  }
+    catch(IllegalArgumentException e){
+      return false;
+    }
+
+    if(i==5 && board[knightycor+2][knightxcor-1]==0){
       board[knightycor+2][knightxcor-1]=counter+1;
       counter++;
       knightycor+=2;
       knightxcor-=1;
     }
-    if(i==8){
+    if(i==8 && board[knightycor-2][knightxcor-1]==0){
       board[knightycor-2][knightxcor-1]=counter+1;
       counter++;
       knightycor-=2;
       knightxcor-=1;
     }
-    if(i==2){
+    if(i==2 && board[knightycor-1][knightxcor+2]==0){
       board[knightycor-1][knightxcor+2]=counter+1;
       counter++;
       knightycor-=1;
       knightxcor+=2;
     }
-    if(i==3){
+    if(i==3 && board[knightycor+1][knightxcor+2]==0){
       board[knightycor+1][knightxcor+2]=counter+1;
       counter++;
       knightycor+=1;
       knightxcor+=2;
     }
-    if(i==6){
+    if(i==6 && board[knightycor+1][knightxcor-2]==0){
       board[knightycor+1][knightxcor-2]=counter+1;
       counter++;
       knightycor+=1;
       knightxcor-=2;
     }
-    if(i==7){
+    if(i==7 && board[knightycor-1][knightxcor-2]==0){
       board[knightycor-1][knightxcor-2]=counter+1;
       counter++;
       knightycor-=1;
