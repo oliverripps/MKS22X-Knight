@@ -15,25 +15,44 @@ public class KnightBoard{
     String str="";
     for(int i=0;i<board.length;i++){
       for(int l=0;l<board[0].length;l++){//for each piece
-        if(board[i][l]>=10){//if queen
-          str+=board[i][l];
+        if(board.length*board[0].length>=10){
+          if(board[i][l]>=10){//if queen
+            str+=board[i][l];
         }
-        if(board[i][l]>0 && board[i][l]<10)
-          str+=" ";
-          str+=board[i][l];
+          if(board[i][l]>0 && board[i][l]<10){
+            str+=" ";
+            str+=board[i][l];
         }
-        if(l<board[0].length-1){
-          str+=" ";
+          if(board[i][l]==0){
+            str+="_";
+          }
+          if(l<board[0].length-1){
+            str+=" ";
         }
-        if(l>=board[0].length-1){
-          str+="\n";
+          if(l>=board[0].length-1){
+            str+="\n";
+        }
+      }
+        else{
+          if(board[i][l]==0){
+            str+="_"
+          }
+          else{
+            str+=board[i][l];
+          }
+          if(l<board[0].length-1){
+            str+=" ";
+        }
+          if(l>=board[0].length-1){
+            str+="\n";
+        }
         }
 
       }
     }
     return str;
   }
-  }
+
 
   public boolean place(int x, int y){
     knightxcor=x;
@@ -79,12 +98,18 @@ public class KnightBoard{
       return false;
     }
 
-    if(i==5 && board[knightycor+2][knightxcor-1]==0){
-      board[knightycor+2][knightxcor-1]=counter+1;
-      counter++;
-      knightycor+=2;
-      knightxcor-=1;
+    try{
+      if(i==5 && board[knightycor+2][knightxcor-1]==0){
+        board[knightycor+2][knightxcor-1]=counter+1;
+        counter++;
+        knightycor+=2;
+        knightxcor-=1;
+      }
+  }
+    catch(IllegalArgumentException e){
+      return false;
     }
+
     if(i==8 && board[knightycor-2][knightxcor-1]==0){
       board[knightycor-2][knightxcor-1]=counter+1;
       counter++;
