@@ -7,11 +7,16 @@ public class KnightBoard{
 
   public KnightBoard(int startingRows,int startingCols){
     int[][] b = new int[startingRows][startingCols];
+    for(int i=0;i<board.length;i++){
+      for(int l=0;l<board[0].length;l++){
+        b[i][l]=0;
+      }
+    }
     board=b;
     moves=b;
   }
-  //Initialize the board to the correct size and make them all 0's
-  public String toString() throws IllegalStateException(){
+
+  public String toString(){
     String str="";
     for(int i=0;i<board.length;i++){
       for(int l=0;l<board[0].length;l++){//for each piece
@@ -35,7 +40,7 @@ public class KnightBoard{
       }
         else{
           if(board[i][l]==0){
-            str+="_"
+            str+="_";
           }
           else{
             str+=board[i][l];
@@ -55,11 +60,18 @@ public class KnightBoard{
 
 
   public boolean place(int x, int y){
-    knightxcor=x;
-    knightycor=y;
-    board[x][y]=1;
-    counter=1;
+    if(x<0 || x>board[0].length-1 || y<0 || y>board.length-1){
+      return false;
+    }
+    else{
+      knightxcor=x;
+      knightycor=y;
+      board[x][y]=1;
+      counter=1;
+      return true;
   }
+}
+
   public boolean isDone(){
     for(int i=0;i<board.length;i++){
       for(int l=0;l<board[0].length;l++){
@@ -71,7 +83,7 @@ public class KnightBoard{
     return true;
   }
 
-  public boolean move(int i) throws IllegalArgumentException(){
+  public boolean move(int i) throws IllegalArgumentException{
     if(i<1 || i>8){
       return false;
     }
@@ -179,13 +191,17 @@ public class KnightBoard{
   @throws IllegalStateException when the board contains non-zero values.
   @throws IllegalArgumentException when either parameter is negative
    or out of bounds.*/
-  public boolean solve(int startingRow, int startingCol)
+  public boolean solve(int startingRow, int startingCol){
+    return true;
+  }
   /*@throws IllegalStateException when the board contains non-zero values.
   @throws IllegalArgumentException when either parameter is negative
  or out of bounds.
   public int countSolutions(int startingRow, int startingCol)
   Suggestion:*/
-  private boolean solveH(int row ,int col, int level)
+  private boolean solveH(int row ,int col, int level){
+    return true;
+  }
   //level is the # of the knight
 
 
