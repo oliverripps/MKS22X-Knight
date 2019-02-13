@@ -41,6 +41,16 @@ public class KnightBoard{
     board[x][y]=1;
     counter=1;
   }
+  public boolean isDone(){
+    for(int i=0;i<board.length;i++){
+      for(int l=0;l<board[0].length;l++){
+        if(board[i][l]==0){
+          return false;
+        }
+      }
+    }
+    return true;
+  }
   public boolean move(int i) throws IllegalArgumentException(){
     if(i<1 || i>8){
       return false;
