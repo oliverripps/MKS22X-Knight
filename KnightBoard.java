@@ -1,7 +1,11 @@
 public class KnightBoard{
   int[][] moves;
   int[][] board;
-  public KnightBoard(int startingRows,int startingCols)
+  public KnightBoard(int startingRows,int startingCols){
+    int[][] b = new int[startingRows][startingCols];
+    board=b;
+    moves=b;
+  }
   //Initialize the board to the correct size and make them all 0's
   public String toString()
   /*see format for toString below
@@ -17,7 +21,7 @@ public class KnightBoard{
  or out of bounds.
   public int countSolutions(int startingRow, int startingCol)
   Suggestion:*/
-  private boolean solveH(int row ,int col, int level) 
+  private boolean solveH(int row ,int col, int level)
   //level is the # of the knight
 
 
