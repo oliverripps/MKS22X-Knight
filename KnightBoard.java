@@ -110,36 +110,66 @@ public class KnightBoard{
       return false;
     }
 
-    if(i==8 && board[knightycor-2][knightxcor-1]==0){
-      board[knightycor-2][knightxcor-1]=counter+1;
-      counter++;
-      knightycor-=2;
-      knightxcor-=1;
+    try{
+      if(i==8 && board[knightycor-2][knightxcor-1]==0){
+        board[knightycor-2][knightxcor-1]=counter+1;
+        counter++;
+        knightycor-=2;
+        knightxcor-=1;
+      }
+  }
+    catch(IllegalArgumentException e){
+      return false;
     }
-    if(i==2 && board[knightycor-1][knightxcor+2]==0){
-      board[knightycor-1][knightxcor+2]=counter+1;
-      counter++;
-      knightycor-=1;
-      knightxcor+=2;
+
+    try{
+      if(i==2 && board[knightycor-1][knightxcor+2]==0){
+        board[knightycor-1][knightxcor+2]=counter+1;
+        counter++;
+        knightycor-=1;
+        knightxcor+=2;
+      }
+  }
+    catch(IllegalArgumentException e){
+      return false;
     }
-    if(i==3 && board[knightycor+1][knightxcor+2]==0){
-      board[knightycor+1][knightxcor+2]=counter+1;
-      counter++;
-      knightycor+=1;
-      knightxcor+=2;
+
+    try{
+      if(i==3 && board[knightycor+1][knightxcor+2]==0){
+        board[knightycor+1][knightxcor+2]=counter+1;
+        counter++;
+        knightycor+=1;
+        knightxcor+=2;
+      }
+  }
+    catch(IllegalArgumentException e){
+      return false;
     }
-    if(i==6 && board[knightycor+1][knightxcor-2]==0){
-      board[knightycor+1][knightxcor-2]=counter+1;
-      counter++;
-      knightycor+=1;
-      knightxcor-=2;
+
+    try{
+      if(i==6 && board[knightycor+1][knightxcor-2]==0){
+        board[knightycor+1][knightxcor-2]=counter+1;
+        counter++;
+        knightycor+=1;
+        knightxcor-=2;
+      }
+  }
+    catch(IllegalArgumentException e){
+      return false;
     }
-    if(i==7 && board[knightycor-1][knightxcor-2]==0){
-      board[knightycor-1][knightxcor-2]=counter+1;
-      counter++;
-      knightycor-=1;
-      knightxcor-=2;
+
+    try{
+      if(i==7 && board[knightycor-1][knightxcor-2]==0){
+        board[knightycor-1][knightxcor-2]=counter+1;
+        counter++;
+        knightycor-=1;
+        knightxcor-=2;
+      }
+  }
+    catch(IllegalArgumentException e){
+      return false;
     }
+    return true;
   }
 
   /*see format for toString below
