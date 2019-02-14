@@ -4,16 +4,18 @@ public class KnightBoard{
   int knightxcor;
   int knightycor;
   int counter;
+  int jumps;
 
   public KnightBoard(int startingRows,int startingCols){
     int[][] b = new int[startingRows][startingCols];
-    for(int i=0;i<board.length;i++){
-      for(int l=0;l<board[0].length;l++){
+    for(int i=0;i<b.length;i++){
+      for(int l=0;l<b[0].length;l++){
         b[i][l]=0;
       }
     }
     board=b;
     moves=b;
+    jumps=(startingCols*startingRows);
   }
 
   public String toString(){
@@ -83,7 +85,7 @@ public class KnightBoard{
     return true;
   }
 
-  public boolean move(int i) throws IllegalArgumentException{
+  public boolean move(int i) throws IndexOutOfBoundsException{
     if(i<1 || i>8){
       return false;
     }
@@ -95,7 +97,7 @@ public class KnightBoard{
         knightxcor+=1;
     }
   }
-    catch(IllegalArgumentException e){
+    catch(IndexOutOfBoundsException e){
       return false;
     }
     try{
@@ -106,7 +108,7 @@ public class KnightBoard{
         knightxcor+=1;
     }
   }
-    catch(IllegalArgumentException e){
+    catch(IndexOutOfBoundsException e){
       return false;
     }
 
@@ -118,7 +120,7 @@ public class KnightBoard{
         knightxcor-=1;
       }
   }
-    catch(IllegalArgumentException e){
+    catch(IndexOutOfBoundsException e){
       return false;
     }
 
@@ -130,7 +132,7 @@ public class KnightBoard{
         knightxcor-=1;
       }
   }
-    catch(IllegalArgumentException e){
+    catch(IndexOutOfBoundsException e){
       return false;
     }
 
@@ -142,7 +144,7 @@ public class KnightBoard{
         knightxcor+=2;
       }
   }
-    catch(IllegalArgumentException e){
+    catch(IndexOutOfBoundsException e){
       return false;
     }
 
@@ -154,7 +156,7 @@ public class KnightBoard{
         knightxcor+=2;
       }
   }
-    catch(IllegalArgumentException e){
+    catch(IndexOutOfBoundsException e){
       return false;
     }
 
@@ -166,7 +168,7 @@ public class KnightBoard{
         knightxcor-=2;
       }
   }
-    catch(IllegalArgumentException e){
+    catch(IndexOutOfBoundsException e){
       return false;
     }
 
@@ -178,7 +180,7 @@ public class KnightBoard{
         knightxcor-=2;
       }
   }
-    catch(IllegalArgumentException e){
+    catch(IndexOutOfBoundsException e){
       return false;
     }
     return true;
@@ -189,31 +191,33 @@ public class KnightBoard{
   you get a blank board if you never called solve or
   when there is no solution
   @throws IllegalStateException when the board contains non-zero values.
-  @throws IllegalArgumentException when either parameter is negative
+  @throws IndexOutOfBoundsException when either parameter is negative
    or out of bounds.*/
   public boolean solve(int startingRow, int startingCol){
+    return solveH(startingRow,startingCol,0);
   }
-  public boolean solve(int startingRow, int startingCol,int c)
+
+  public boolean solveH(int startingRow, int startingCol,int c){
     if(c==0){
       if(!place(startingCol,startingRow)){
         return false;
     }
   }
+    if(c>jumps){
+      return true;
+    }
     for(int i=0;i<8;i++){
       if(move(i)){
-        solve(startingRow, startingCol, c+1)
+        solveH(startingRow, startingCol,c+1);
       }
     }
     return false;
   }
   /*@throws IllegalStateException when the board contains non-zero values.
-  @throws IllegalArgumentException when either parameter is negative
+  @throws IndexOutOfBoundsException when either parameter is negative
  or out of bounds.
   public int countSolutions(int startingRow, int startingCol)
   Suggestion:*/
-  private boolean solveH(int row ,int col, int level){
-    return true;
-  }
   //level is the # of the knight
 
 
