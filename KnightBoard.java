@@ -31,7 +31,7 @@ public class KnightBoard{
             str+=board[i][l];
         }
           if(board[i][l]==0){
-            str+="_";
+            str+=" _";
           }
           if(l<board[0].length-1){
             str+=" ";
@@ -198,20 +198,25 @@ public class KnightBoard{
   }
 
   public boolean solveH(int startingRow, int startingCol,int c){
+    //System.out.println(c);
     if(c==0){
-      if(!place(startingCol,startingRow)){
+      if(!place(startingRow,startingCol)){
         return false;
     }
   }
-    if(c>jumps){
+    if(c>=jumps){
       return true;
     }
-    for(int i=0;i<8;i++){
-      if(move(i)){
-        solveH(startingRow, startingCol,c+1);
+    else{
+      for(int i=1;i<9;i++){
+        if(move(i)){
+          if(solveH(startingRow, startingCol,c+1)){
+            return true;
+          }
       }
     }
     return false;
+  }
   }
   /*@throws IllegalStateException when the board contains non-zero values.
   @throws IndexOutOfBoundsException when either parameter is negative
