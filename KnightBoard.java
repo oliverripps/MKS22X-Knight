@@ -192,7 +192,19 @@ public class KnightBoard{
   @throws IllegalArgumentException when either parameter is negative
    or out of bounds.*/
   public boolean solve(int startingRow, int startingCol){
-    return true;
+  }
+  public boolean solve(int startingRow, int startingCol,int c)
+    if(c==0){
+      if(!place(startingCol,startingRow)){
+        return false;
+    }
+  }
+    for(int i=0;i<8;i++){
+      if(move(i)){
+        solve(startingRow, startingCol, c+1)
+      }
+    }
+    return false;
   }
   /*@throws IllegalStateException when the board contains non-zero values.
   @throws IllegalArgumentException when either parameter is negative
