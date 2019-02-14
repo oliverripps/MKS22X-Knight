@@ -68,7 +68,7 @@ public class KnightBoard{
     else{
       knightxcor=x;
       knightycor=y;
-      board[x][y]=1;
+      board[y][x]=1;
       counter=1;
       return true;
   }
@@ -95,7 +95,9 @@ public class KnightBoard{
         counter++;
         knightycor-=2;
         knightxcor+=1;
+        return true;
     }
+
   }
     catch(IndexOutOfBoundsException e){
       return false;
@@ -106,7 +108,9 @@ public class KnightBoard{
         counter++;
         knightycor+=2;
         knightxcor+=1;
+        return true;
     }
+
   }
     catch(IndexOutOfBoundsException e){
       return false;
@@ -118,7 +122,9 @@ public class KnightBoard{
         counter++;
         knightycor+=2;
         knightxcor-=1;
+        return true;
       }
+
   }
     catch(IndexOutOfBoundsException e){
       return false;
@@ -130,7 +136,9 @@ public class KnightBoard{
         counter++;
         knightycor-=2;
         knightxcor-=1;
+        return true;
       }
+
   }
     catch(IndexOutOfBoundsException e){
       return false;
@@ -142,7 +150,9 @@ public class KnightBoard{
         counter++;
         knightycor-=1;
         knightxcor+=2;
+        return true;
       }
+
   }
     catch(IndexOutOfBoundsException e){
       return false;
@@ -154,7 +164,9 @@ public class KnightBoard{
         counter++;
         knightycor+=1;
         knightxcor+=2;
+        return true;
       }
+
   }
     catch(IndexOutOfBoundsException e){
       return false;
@@ -166,7 +178,9 @@ public class KnightBoard{
         counter++;
         knightycor+=1;
         knightxcor-=2;
+        return true;
       }
+
   }
     catch(IndexOutOfBoundsException e){
       return false;
@@ -178,12 +192,14 @@ public class KnightBoard{
         counter++;
         knightycor-=1;
         knightxcor-=2;
+        return true;
       }
+
   }
     catch(IndexOutOfBoundsException e){
       return false;
     }
-    return true;
+    return false;
   }
 
   /*see format for toString below
@@ -198,9 +214,8 @@ public class KnightBoard{
   }
 
   public boolean solveH(int startingRow, int startingCol,int c){
-    //System.out.println(c);
     if(c==0){
-      if(!place(startingRow,startingCol)){
+      if(!place(startingCol,startingRow)){
         return false;
     }
   }
@@ -210,6 +225,8 @@ public class KnightBoard{
     else{
       for(int i=1;i<9;i++){
         if(move(i)){
+          System.out.println(i);
+          System.out.println(toString());
           if(solveH(startingRow, startingCol,c+1)){
             return true;
           }
