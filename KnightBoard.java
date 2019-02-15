@@ -201,6 +201,122 @@ public class KnightBoard{
     }
     return false;
   }
+  public boolean remove(int i) throws IndexOutOfBoundsException{
+    if(i<1 || i>8){
+      return false;
+    }
+    try{
+      if(i==1){
+        board[knightycor][knightxcor]=0;
+        counter--;
+        knightycor+=2;
+        knightxcor-=1;
+        return true;
+    }
+//follow tHIS
+  }
+    catch(IndexOutOfBoundsException e){
+      return false;
+    }
+    try{
+      if(i==4 && board[knightycor+2][knightxcor+1]==0){
+        board[knightycor+2][knightxcor+1]=counter+1;
+        counter++;
+        knightycor+=2;
+        knightxcor+=1;
+        return true;
+    }
+
+  }
+    catch(IndexOutOfBoundsException e){
+      return false;
+    }
+
+    try{
+      if(i==5 && board[knightycor+2][knightxcor-1]==0){
+        board[knightycor+2][knightxcor-1]=counter+1;
+        counter++;
+        knightycor+=2;
+        knightxcor-=1;
+        return true;
+      }
+
+  }
+    catch(IndexOutOfBoundsException e){
+      return false;
+    }
+
+    try{
+      if(i==8 && board[knightycor-2][knightxcor-1]==0){
+        board[knightycor-2][knightxcor-1]=counter+1;
+        counter++;
+        knightycor-=2;
+        knightxcor-=1;
+        return true;
+      }
+
+  }
+    catch(IndexOutOfBoundsException e){
+      return false;
+    }
+
+    try{
+      if(i==2 && board[knightycor-1][knightxcor+2]==0){
+        board[knightycor-1][knightxcor+2]=counter+1;
+        counter++;
+        knightycor-=1;
+        knightxcor+=2;
+        return true;
+      }
+
+  }
+    catch(IndexOutOfBoundsException e){
+      return false;
+    }
+
+    try{
+      if(i==3 && board[knightycor+1][knightxcor+2]==0){
+        board[knightycor+1][knightxcor+2]=counter+1;
+        counter++;
+        knightycor+=1;
+        knightxcor+=2;
+        return true;
+      }
+
+  }
+    catch(IndexOutOfBoundsException e){
+      return false;
+    }
+
+    try{
+      if(i==6 && board[knightycor+1][knightxcor-2]==0){
+        board[knightycor+1][knightxcor-2]=counter+1;
+        counter++;
+        knightycor+=1;
+        knightxcor-=2;
+        return true;
+      }
+
+  }
+    catch(IndexOutOfBoundsException e){
+      return false;
+    }
+
+    try{
+      if(i==7 && board[knightycor-1][knightxcor-2]==0){
+        board[knightycor-1][knightxcor-2]=counter+1;
+        counter++;
+        knightycor-=1;
+        knightxcor-=2;
+        return true;
+      }
+
+  }
+    catch(IndexOutOfBoundsException e){
+      return false;
+    }
+    return false;
+  }
 
   /*see format for toString below
   blank boards display 0's as underscores
@@ -210,10 +326,10 @@ public class KnightBoard{
   @throws IndexOutOfBoundsException when either parameter is negative
    or out of bounds.*/
   public boolean solve(int startingRow, int startingCol){
-    return solveH(startingRow,startingCol,0);
+    return solveH(startingRow,startingCol,0,1);
   }
 
-  public boolean solveH(int startingRow, int startingCol,int c){
+  public boolean solveH(int startingRow, int startingCol,int c, int x){
     if(c==0){
       if(!place(startingCol,startingRow)){
         return false;
@@ -222,18 +338,22 @@ public class KnightBoard{
     if(c>=jumps){
       return true;
     }
-    else{
-      for(int i=1;i<9;i++){
-        if(move(i)){
-          System.out.println(i);
-          System.out.println(toString());
-          if(solveH(startingRow, startingCol,c+1)){
-            return true;
+    for(int i=x;i<9;i++){
+      if(move(i)){
+        if(solveH(knightycor, knightxcor,c+1)){
+          return true;
           }
+        else{
+          remove(i);
+          solveH(knightycor, knightxcor,c,x+1);
+        }
       }
+
+        /*else{
+          solveH(startingRow,startingCol,c,x+1);
+        }*/
     }
     return false;
-  }
   }
   /*@throws IllegalStateException when the board contains non-zero values.
   @throws IndexOutOfBoundsException when either parameter is negative

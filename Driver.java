@@ -1,8 +1,8 @@
 public class Driver{
 
   public static void main(String[] args){
-    KnightBoard test = new KnightBoard(5,5);
-    test.solve(2,2);
+    KnightBoard test = new KnightBoard(8,8);
+    test.solve(4,0);
     System.out.println(test.toString());
   }
 
