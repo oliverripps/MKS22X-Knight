@@ -5,6 +5,8 @@ public class KnightBoard{
   int knightycor;
   int counter;
   int jumps;
+  int rows;
+  int columns;
 
   public KnightBoard(int startingRows,int startingCols){
     int[][] b = new int[startingRows][startingCols];
@@ -16,6 +18,13 @@ public class KnightBoard{
     board=b;
     moves=b;
     jumps=(startingCols*startingRows);
+    rows=startingRows;
+    columns=startingCols;
+  }
+
+  public void clear(){
+
+
   }
 
   public String toString(){
