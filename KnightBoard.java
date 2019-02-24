@@ -201,7 +201,7 @@ public class KnightBoard{
     }
     return false;
   }
-  public boolean remove(int i) throws IndexOutOfBoundsException{
+  /*public boolean remove(int i) throws IndexOutOfBoundsException{
     if(i<1 || i>8){
       return false;
     }
@@ -316,7 +316,7 @@ public class KnightBoard{
       return false;
     }
     return false;
-  }
+  }*/
 
   /*see format for toString below
   blank boards display 0's as underscores
