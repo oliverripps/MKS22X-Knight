@@ -23,7 +23,8 @@ public class KnightBoard{
   }
 
   public void clear(){
-
+    int[][] b = new int[rows][columns];
+    counter=0;
 
   }
 
