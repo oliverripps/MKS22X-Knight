@@ -331,8 +331,9 @@ public class KnightBoard{
   }
   public boolean remove(int row,int col){
     if(col >= 0 && col < board[0].length&& row>=0 && row < board.length){
-      if board[row][col]!=0){
+      if(board[row][col]!=0){
         board[row][col] = 0;
+        counter--;
         return true;
       }
     }
@@ -368,7 +369,7 @@ public class KnightBoard{
         if(solveH(knightycor, knightxcor,c+1)){
           return true;
           }
-        remove(i);
+        remove(knightycor,knightxcor);
         }
       }
       /*clear();
