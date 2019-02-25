@@ -213,7 +213,7 @@ public class KnightBoard{
     }
     return false;
   }
-  /*public boolean remove(int i) throws IndexOutOfBoundsException{
+  public boolean remove(int i) throws IndexOutOfBoundsException{
     if(i<1 || i>8){
       return false;
     }
@@ -231,11 +231,11 @@ public class KnightBoard{
       return false;
     }
     try{
-      if(i==4 && board[knightycor+2][knightxcor+1]==0){
-        board[knightycor+2][knightxcor+1]=counter+1;
-        counter++;
-        knightycor+=2;
-        knightxcor+=1;
+      if(i==4){
+        board[knightycor][knightxcor]=0;
+        counter--;
+        knightycor-=2;
+        knightxcor-=1;
         return true;
     }
 
@@ -346,20 +346,20 @@ public class KnightBoard{
       if(!place(startingCol,startingRow)){
         return false;
     }*/
-  }
     if(c>=jumps){
       return true;
     }
     if(board[startingRow][startingCol]!=0){
       return false;
     }
+
     for(int i=1;i<9;i++){
-      board[startingRow][startingCol]=counter;
+      //board[startingRow][startingCol]=counter;
       if(move(i)){
         if(solveH(knightycor, knightxcor,c+1)){
           return true;
           }
-        board[startingRow][startingCol]=0;
+        remove(i);
         }
       }
       /*clear();
