@@ -352,11 +352,10 @@ public class KnightBoard{
   }
 
   public boolean solveH(int startingRow, int startingCol,int c){
-    /*if(c==0){
-      if(!place(startingCol,startingRow)){
-        return false;
-    }*/
-    if(c>=jumps){
+    if(c==0){
+      board[knightycor][knightxcor]=counter;
+    }
+    if(c>=jumps-1){
       return true;
     }
     /*if(board[startingRow][startingCol]!=0){
