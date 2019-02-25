@@ -25,6 +25,7 @@ public class KnightBoard{
   public void clear(){
     int[][] b = new int[rows][columns];
     counter=0;
+    board=b;
 
   }
 
@@ -353,11 +354,12 @@ public class KnightBoard{
         if(solveH(knightycor, knightxcor,c+1)){
           return true;
           }
-        else{
-          remove(i);
-          solveH(knightycor, knightxcor,c,x+1);
+
         }
       }
+      clear();
+      solveH(startingRow,startingCol,0)
+
 
         /*else{
           solveH(startingRow,startingCol,c,x+1);
