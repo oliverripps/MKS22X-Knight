@@ -390,7 +390,7 @@ public class KnightBoard{
       board[knightycor][knightxcor]=counter;
     }
     if(c>=jumps-1){
-      return true;
+      return 1;
     }
     /*if(board[startingRow][startingCol]!=0){
       return false;
@@ -400,18 +400,15 @@ public class KnightBoard{
       //board[startingRow][startingCol]=counter;
       if(move(i)){
         //System.out.println(c);
-        if(solveH(knightycor, knightxcor,c+1)){
+        solutions+=countH(knightycor, knightxcor,c+1);
           //System.out.println(c);
-          return true;
-          }
         remove(i);
         }
       }
       /*clear();
       solveH(startingRow,startingCol,0,1);*/
-      return false;
+      return solutions;
   }
 
   }
   //level is the # of the knight
-}
