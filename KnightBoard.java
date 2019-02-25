@@ -348,7 +348,7 @@ public class KnightBoard{
   @throws IndexOutOfBoundsException when either parameter is negative
    or out of bounds.*/
   public boolean solve(int startingRow, int startingCol){
-    return solveH(startingRow,startingCol,1);
+    return solveH(startingRow,startingCol,0);
   }
 
   public boolean solveH(int startingRow, int startingCol,int c){
@@ -359,17 +359,19 @@ public class KnightBoard{
     if(c>=jumps){
       return true;
     }
-    if(board[startingRow][startingCol]!=0){
+    /*if(board[startingRow][startingCol]!=0){
       return false;
-    }
+    }*/
 
     for(int i=1;i<9;i++){
       //board[startingRow][startingCol]=counter;
       if(move(i)){
+        //System.out.println(c);
         if(solveH(knightycor, knightxcor,c+1)){
+          //System.out.println(c);
           return true;
           }
-        remove(knightycor,knightxcor);
+        remove(i);
         }
       }
       /*clear();
