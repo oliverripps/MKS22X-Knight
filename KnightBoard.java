@@ -379,8 +379,39 @@ public class KnightBoard{
   }
   /*@throws IllegalStateException when the board contains non-zero values.
   @throws IndexOutOfBoundsException when either parameter is negative
- or out of bounds.
-  public int countSolutions(int startingRow, int startingCol)
-  Suggestion:*/
+ or out of bounds.*/
+  public int countSolutions(int startingRow, int startingCol){
+
+  }
+
+  public int countH(int startingRow, int startingCol, int c){
+    int solutions=0;
+    if(c==0){
+      board[knightycor][knightxcor]=counter;
+    }
+    if(c>=jumps-1){
+      return true;
+    }
+    /*if(board[startingRow][startingCol]!=0){
+      return false;
+    }*/
+
+    for(int i=1;i<9;i++){
+      //board[startingRow][startingCol]=counter;
+      if(move(i)){
+        //System.out.println(c);
+        if(solveH(knightycor, knightxcor,c+1)){
+          //System.out.println(c);
+          return true;
+          }
+        remove(i);
+        }
+      }
+      /*clear();
+      solveH(startingRow,startingCol,0,1);*/
+      return false;
+  }
+
+  }
   //level is the # of the knight
 }
