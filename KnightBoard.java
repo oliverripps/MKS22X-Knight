@@ -7,6 +7,7 @@ public class KnightBoard{
   int jumps;
   int rows;
   int columns;
+  int solutions;
 
   public KnightBoard(int startingRows,int startingCols){
     int[][] b = new int[startingRows][startingCols];
@@ -21,6 +22,7 @@ public class KnightBoard{
     rows=startingRows;
     columns=startingCols;
     counter=1;
+    solutions=0;
   }
 
   public void clear(){
@@ -226,6 +228,7 @@ public class KnightBoard{
         return true;
     }
 //follow tHIS
+    //System.out.println(test.toString());
   }
     catch(IndexOutOfBoundsException e){
       return false;
@@ -385,7 +388,6 @@ public class KnightBoard{
   }
 
   public int countH(int startingRow, int startingCol, int c){
-    int solutions=0;
     if(c==0){
       board[knightycor][knightxcor]=counter;
     }
@@ -399,7 +401,6 @@ public class KnightBoard{
     for(int i=1;i<9;i++){
       //board[startingRow][startingCol]=counter;
       if(move(i)){
-        //System.out.println(c);
         solutions+=countH(knightycor, knightxcor,c+1);
           //System.out.println(c);
         remove(i);
