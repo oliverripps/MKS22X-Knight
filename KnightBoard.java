@@ -20,11 +20,12 @@ public class KnightBoard{
     jumps=(startingCols*startingRows);
     rows=startingRows;
     columns=startingCols;
+    counter=1;
   }
 
   public void clear(){
     int[][] b = new int[rows][columns];
-    counter=0;
+    counter=1;
     board=b;
 
   }
@@ -337,35 +338,33 @@ public class KnightBoard{
   @throws IndexOutOfBoundsException when either parameter is negative
    or out of bounds.*/
   public boolean solve(int startingRow, int startingCol){
-    return solveH(startingRow,startingCol,0,1);
+    return solveH(startingRow,startingCol,1);
   }
 
-  public boolean solveH(int startingRow, int startingCol,int c, int x){
-    if(c==0){
+  public boolean solveH(int startingRow, int startingCol,int c){
+    /*if(c==0){
       if(!place(startingCol,startingRow)){
         return false;
-    }
+    }*/
   }
     if(c>=jumps){
       return true;
     }
-    for(int i=x;i<9;i++){
+    if(board[startingRow][startingCol]!=0){
+      return false;
+    }
+    for(int i=1;i<9;i++){
+      board[startingRow][startingCol]=counter;
       if(move(i)){
         if(solveH(knightycor, knightxcor,c+1)){
           return true;
           }
-
+        board[startingRow][startingCol]=0;
         }
       }
-      clear();
-      solveH(startingRow,startingCol,0)
-
-
-        /*else{
-          solveH(startingRow,startingCol,c,x+1);
-        }*/
-    }
-    return false;
+      /*clear();
+      solveH(startingRow,startingCol,0,1);*/
+      return false;
   }
   /*@throws IllegalStateException when the board contains non-zero values.
   @throws IndexOutOfBoundsException when either parameter is negative
@@ -373,13 +372,4 @@ public class KnightBoard{
   public int countSolutions(int startingRow, int startingCol)
   Suggestion:*/
   //level is the # of the knight
-
-
-
-
-
-
-
-
-
 }
