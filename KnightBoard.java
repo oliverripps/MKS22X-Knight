@@ -381,7 +381,7 @@ public class KnightBoard{
   @throws IndexOutOfBoundsException when either parameter is negative
  or out of bounds.*/
   public int countSolutions(int startingRow, int startingCol){
-
+    return countH(startingRow,startingCol,0);
   }
 
   public int countH(int startingRow, int startingCol, int c){
