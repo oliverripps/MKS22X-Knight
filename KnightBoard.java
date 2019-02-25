@@ -328,7 +328,16 @@ public class KnightBoard{
       return false;
     }
     return false;
-  }*/
+  }
+  public boolean remove(int row,int col){
+    if(col >= 0 && col < board[0].length&& row>=0 && row < board.length){
+      if board[row][col]!=0){
+        board[row][col] = 0;
+        return true;
+      }
+    }
+    return false;
+  }
 
   /*see format for toString below
   blank boards display 0's as underscores
