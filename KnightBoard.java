@@ -21,7 +21,6 @@ public class KnightBoard{
     }
     setupmovesboard(startingRows,startingCols);
     board=b;
-    moves=b;
     jumps=(startingCols*startingRows);
     rows=startingRows;
     columns=startingCols;
@@ -43,8 +42,8 @@ public class KnightBoard{
       }
     }
     for(int i=0;i<moves.length;i++){
-      for(int l =0;l<moves[0].length;l++){
-        System.out.println("hi");
+      for(int l=0;l<moves[0].length;l++){
+        //System.out.println("hi");
         setupmoves(i,l);
       }
     }
@@ -170,32 +169,29 @@ public class KnightBoard{
   private void setupmoves(int r, int c){
     int failures=0;
     try{
-      if((r-2)>0 && (r-2)<moves.length && (c+1)>0 && (c+1)<moves[0].length){
+      if((r-2)>=0 && (r-2)<moves.length && (c+1)>=0 && (c+1)<moves[0].length){
         moves[r-2][c+1]+=1;
-        System.out.println("hi");
+        //System.out.println("hi");
     }
-      if(r-2>0 && r-2<moves.length && c-1>0 && c-1<moves[0].length){
+      if(r-2>=0 && r-2<moves.length && c-1>=0 && c-1<moves[0].length){
         moves[r-2][c-1]+=1;
       }
-      if(r+2>0 && r+2<moves.length && c+1>0 && c+1<moves[0].length){
+      if(r+2>=0 && r+2<moves.length && c+1>=0 && c+1<moves[0].length){
         moves[r+2][c+1]+=1;
       }
-      if(r+2>0 && r+2<moves.length && c-1>0 && c-1<moves[0].length){
+      if(r+2>=0 && r+2<moves.length && c-1>=0 && c-1<moves[0].length){
         moves[r+2][c-1]+=1;
     }
-      if(r+1>0 && r+1<moves.length && c+1>0 && c+1<moves[0].length){
-        moves[r+1][c+1]+=1;
-  }
-      if(r+1>0 && r+1<moves.length && c+2>0 && c+2<moves[0].length){
+      if(r+1>=0 && r+1<moves.length && c+2>=0 && c+2<moves[0].length){
         moves[r+1][c+2]+=1;
 }
-      if(r+1>0 && r+1<moves.length && c-2>0 && c-2<moves[0].length){
+      if(r+1>=0 && r+1<moves.length && c-2>=0 && c-2<moves[0].length){
         moves[r+1][c-2]+=1;
 }
-      if(r-1>0 && r-1<moves.length && c+2>0 && c+2<moves[0].length){
+      if(r-1>=0 && r-1<moves.length && c+2>=0 && c+2<moves[0].length){
         moves[r-1][c+2]+=1;
 }
-      if(r-1>0 && r-1<moves.length && c-2>0 && c-2<moves[0].length){
+      if(r-1>=0 && r-1<moves.length && c-2>=0 && c-2<moves[0].length){
         moves[r-1][c-2]+=1;
 }
   }
