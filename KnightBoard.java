@@ -1,4 +1,4 @@
-import *.ArrayList
+import java.util.ArrayList;
 
 public class KnightBoard{
   int[][] moves;
@@ -181,6 +181,7 @@ public class KnightBoard{
 
   public ArrayList<Integer> orderMoves(int r,int c){
     ArrayList<Integer> a = new ArrayList<Integer>(0);
+    int failures=0;
     try{
       if((r-2)>=0 && (r-2)<moves.length && (c+1)>=0 && (c+1)<moves[0].length){
         int option1=moves[r-2][c+1];
@@ -526,7 +527,7 @@ public class KnightBoard{
     b=orderMoves(knightycor,knightxcor);
     for(int i=0;i<b.size();i++){
       //board[startingRow][startingCol]=counter;
-      if(move(i)){
+      if(move(b.get(i).substring(*b.get(i).length()-1),(b.get(i).length()))){
         //System.out.println(c);
         if(solveH(knightycor, knightxcor,c+1)){
           //System.out.println(c);
