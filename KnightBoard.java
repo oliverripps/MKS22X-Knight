@@ -177,7 +177,7 @@ public class KnightBoard{
     }
   }
 
-  public int orderMoves(int r,int c){
+  public ArrayList<Integer> orderMoves(int r,int c){
     ArrayList<Integer> a = new ArrayList<Integer>(0);
     try{
       if((r-2)>=0 && (r-2)<moves.length && (c+1)>=0 && (c+1)<moves[0].length){
@@ -218,7 +218,8 @@ public class KnightBoard{
       failures++;
     }
   Sort(a);
-  }
+  return a;
+}
 
   private void setupmoves(int r, int c){
     int failures=0;
