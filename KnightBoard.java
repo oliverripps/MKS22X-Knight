@@ -19,6 +19,9 @@ public class KnightBoard{
         b[i][l]=0;
       }
     }
+    int[][] m = new int[startingRows][startingCols];
+    m[0][0]=2;
+    m[startingRows-0]
     board=b;
     moves=b;
     jumps=(startingCols*startingRows);
@@ -101,6 +104,9 @@ public class KnightBoard{
     return true;
   }
 
+  public boolean checkMove(int i){
+  }
+  
   public boolean move(int i) throws IndexOutOfBoundsException{
     if(i<1 || i>8){
       return false;
