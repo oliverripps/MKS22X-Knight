@@ -121,15 +121,30 @@ public class KnightBoard{
       if(r-2>0 && r-2<moves.length && c+1>0 && c+1<moves[0].length){
         moves[r-2][c+1]+=1;
     }
-      if(r-2>0 && r-2<moves.length && c+1>0 && c+1<moves[0].length){
-        moves[r-2][c+1]+=1;
-      if(r-2>0 && r-2<moves.length && c+1>0 && c+1<moves[0].length){
-        moves[r-2][c+1]+=1;
+      if(r-2>0 && r-2<moves.length && c-1>0 && c-1<moves[0].length){
+        moves[r-2][c-1]+=1;
       }
-      if(r-2>0 && r-2<moves.length && c+1>0 && c+1<moves[0].length){
-        moves[r-2][c+1]+=1;
+      if(r+2>0 && r+2<moves.length && c+1>0 && c+1<moves[0].length){
+        moves[r+2][c+1]+=1;
+      }
+      if(r+2>0 && r+2<moves.length && c-1>0 && c-1<moves[0].length){
+        moves[r+2][c-1]+=1;
     }
+      if(r+1>0 && r+1<moves.length && c+1>0 && c+1<moves[0].length){
+        moves[r+1][c+1]+=1;
   }
+      if(r+1>0 && r+1<moves.length && c+2>0 && c+2<moves[0].length){
+        moves[r+1][c+2]+=1;
+}
+      if(r+1>0 && r+1<moves.length && c-2>0 && c-2<moves[0].length){
+        moves[r+1][c-2]+=1;
+}
+      if(r-1>0 && r-1<moves.length && c+2>0 && c+2<moves[0].length){
+        moves[r-1][c+2]+=1;
+}
+      if(r-1>0 && r-1<moves.length && c-2>0 && c-2<moves[0].length){
+        moves[r-1][c-2]+=1;
+}
   }
     catch(IndexOutOfBoundsException e){
       failures++;
