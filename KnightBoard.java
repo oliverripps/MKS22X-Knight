@@ -19,7 +19,7 @@ public class KnightBoard{
         b[i][l]=0;
       }
     }
-    setupmoves(startingRows,startingCols);
+    setupmovesboard(startingRows,startingCols);
     board=b;
     moves=b;
     jumps=(startingCols*startingRows);
@@ -34,14 +34,24 @@ public class KnightBoard{
     board=b;
 
   }
-  private void setupmoves(int r,int c){
-    int[][] m = new int[startingRows][startingCols];
-    for(int i=0;i<m.length;i++){
-      for(int l =0;l<m[0].length;l++){
+  private void setupmovesboard(int r,int c){
+    int[][] m = new int[r][c];
+    moves=m;
+    for(int i=0;i<moves.length;i++){
+      for(int l =0;l<moves[0].length;l++){
+        moves[i][l]=0;
+      }
+    }
+    for(int i=0;i<moves.length;i++){
+      for(int l =0;l<moves[0].length;l++){
+        System.out.println("hi");
         setupmoves(i,l);
       }
     }
-    moves=m;
+  }
+
+  public int getmoves(int r, int c){
+    return moves[r][c];
   }
 
   public String toString(){
@@ -160,8 +170,9 @@ public class KnightBoard{
   private void setupmoves(int r, int c){
     int failures=0;
     try{
-      if(r-2>0 && r-2<moves.length && c+1>0 && c+1<moves[0].length){
+      if((r-2)>0 && (r-2)<moves.length && (c+1)>0 && (c+1)<moves[0].length){
         moves[r-2][c+1]+=1;
+        System.out.println("hi");
     }
       if(r-2>0 && r-2<moves.length && c-1>0 && c-1<moves[0].length){
         moves[r-2][c-1]+=1;
