@@ -542,6 +542,8 @@ public static void Sort(ArrayList<Moves> data){
   }
 
   public boolean solveH(int startingRow, int startingCol,int c){
+    knightxcor=startingCol;
+    knightycor=startingRow;
     if(c==0){
       board[knightycor][knightxcor]=counter;
     }
@@ -585,6 +587,8 @@ public static void Sort(ArrayList<Moves> data){
   }
 
   public int countH(int startingRow, int startingCol, int c){
+    knightxcor=startingCol;
+    knightycor=startingRow;
     int solutions=0;
     if(c>=jumps-1){
       return 1;
@@ -594,7 +598,7 @@ public static void Sort(ArrayList<Moves> data){
     }
     ArrayList<Moves> b = new ArrayList<Moves>(0);
     b=orderMoves(knightycor,knightxcor);
-    System.out.println(toStringSort(b));
+    //System.out.println(toStringSort(b));
     for(int i=0;i<b.size();i++){
       if(move(b.get(i).getName())){
         solutions+=countH(knightycor, knightxcor,c+1);
@@ -603,6 +607,44 @@ public static void Sort(ArrayList<Moves> data){
         }
       }
       return solutions;
+  }
+
+  public static void main(String[] args){
+
+  for(int i=0;i<5;i++){
+  KnightBoard b;
+  int[]m =   {4,5,5,5,5};
+  int[]n =   {4,5,4,5,5};
+  int[]startx = {0,0,0,1,2};
+  int[]starty = {0,0,0,1,2};
+  int[]answers = {0,304,32,56,64};
+  if(i >= 0 ){
+    try{
+      int correct = answers[i];
+      b = new KnightBoard(m[i%m.length],n[i%m.length]);
+
+      int ans  = b.countSolutions(startx[i],starty[i]);
+
+      if(correct==ans){
+        System.out.println("PASS board size: "+m[i%m.length]+"x"+n[i%m.length]+" "+ans);
+      }else{
+        System.out.println("FAIL board size: "+m[i%m.length]+"x"+n[i%m.length]+" "+ans+" vs "+correct);
+      }
+    }catch(Exception e){
+      System.out.println("FAIL Exception case: "+i);
+
+    }
+  }
+
+
+}
+
+
+
+
+
+
+
   }
 
   }
