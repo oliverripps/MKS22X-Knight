@@ -533,7 +533,7 @@ public class KnightBoard{
           //System.out.println(c);
           return true;
           }
-        remove(i);
+        remove(b.get(i).substring(*b.get(i).length()-1),(b.get(i).length()));
         }
       }
       /*clear();
