@@ -162,6 +162,21 @@ public class KnightBoard{
     return true;
   }
 
+  public static void Sort(int[] ary){
+    if(ary.length!=0){//testing for not being 0
+      int current;
+      for(int i = 1;i<ary.length;i++){//starting with the first wrong one, loop through
+        current=ary[i];//current is the one you want to sort
+        int l = i-1;//the first one sorted
+        while(l>=0 && current<=ary[l]){//while it is still bigger
+          ary[l+1]=ary[l];//shift over
+          l--;
+        }
+        ary[l+1]=current;//place
+      }
+    }
+  }
+
   public int orderMoves(int r,int c){
     try{
       if((r-2)>=0 && (r-2)<moves.length && (c+1)>=0 && (c+1)<moves[0].length){
