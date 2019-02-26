@@ -181,14 +181,14 @@ public class KnightBoard{
 public static void Sort(ArrayList<Moves> data){
   if(data.size()!=0){
   boolean ready= false;//boolean to see if a change was made this round
-  int current;
+  Moves current;
   while(!ready){
     ready=true;
     for(int i = 0;i<data.size()-1;i++){//looping through each element
       if(data.get(i).getValue()>data.get(i+1).getValue()){//if they are in the wrong order, switch them
         current=data.get(i);
-        data.get(i)=data.get(i+1);
-        data.get(i+1)=current;
+        data.set(i,data.get(i+1));
+        data.set(i+1,current);
         ready=false;//showing a change was made
       }
     }
@@ -196,7 +196,7 @@ public static void Sort(ArrayList<Moves> data){
 }
 }
 
-  public ArrayList<Integer> orderMoves(int r,int c){
+  public ArrayList<Moves> orderMoves(int r,int c){
     ArrayList<Moves> a = new ArrayList<Moves>(0);
     int failures=0;
     try{
@@ -551,17 +551,17 @@ public static void Sort(ArrayList<Moves> data){
     /*if(board[startingRow][startingCol]!=0){
       return false;
     }*/
-    ArrayList<Integer> b = new ArrayList<Integer>(0);
+    ArrayList<Moves> b = new ArrayList<Moves>(0);
     b=orderMoves(knightycor,knightxcor);
     for(int i=0;i<b.size();i++){
       //board[startingRow][startingCol]=counter;
-      if(move(b.get(i))){
+      if(move(b.get(i).getName())){
         //System.out.println(c);
         if(solveH(knightycor, knightxcor,c+1)){
           //System.out.println(c);
           return true;
           }
-        remove(b.get(i));
+        remove(b.get(i).getName());
         }
       }
       /*clear();
@@ -571,7 +571,7 @@ public static void Sort(ArrayList<Moves> data){
   /*@throws IllegalStateException when the board contains non-zero values.
   @throws IndexOutOfBoundsException when either parameter is negative
  or out of bounds.*/
-  public int countSolutions(int startingRow, int startingCol){
+  /*public int countSolutions(int startingRow, int startingCol){
     return countH(startingRow,startingCol,0);
   }
 
@@ -583,9 +583,6 @@ public static void Sort(ArrayList<Moves> data){
     if(c==0){
       board[knightycor][knightxcor]=counter;
     }
-    /*if(board[startingRow][startingCol]!=0){
-      return false;
-    }*/
     for(int i=1;i<9;i++){
       //board[startingRow][startingCol]=counter;
       if(move(i)){
@@ -594,10 +591,8 @@ public static void Sort(ArrayList<Moves> data){
         remove(i);
         }
       }
-      /*clear();
-      solveH(startingRow,startingCol,0,1);*/
       return solutions;
-  }
+  }*/
 
   }
   //level is the # of the knight
