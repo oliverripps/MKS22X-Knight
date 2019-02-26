@@ -1,3 +1,5 @@
+import *.ArrayList
+
 public class KnightBoard{
   int[][] moves;
   int[][] board;
@@ -520,8 +522,9 @@ public class KnightBoard{
     /*if(board[startingRow][startingCol]!=0){
       return false;
     }*/
-
-    for(int i=1;i<9;i++){
+    ArrayList<Integer> b = new ArrayList<Integer>(0);
+    b=orderMoves(knightycor,knightxcor);
+    for(int i=0;i<b.size();i++){
       //board[startingRow][startingCol]=counter;
       if(move(i)){
         //System.out.println(c);
