@@ -229,7 +229,6 @@ public class KnightBoard{
     try{
       if((r-2)>=0 && (r-2)<moves.length && (c+1)>=0 && (c+1)<moves[0].length){
         moves[r-2][c+1]+=1;
-        //System.out.println("hi");
     }
       if(r-2>=0 && r-2<moves.length && c-1>=0 && c-1<moves[0].length){
         moves[r-2][c-1]+=1;
@@ -258,7 +257,9 @@ public class KnightBoard{
     }
 
   }
-  public boolean move(int i) throws IndexOutOfBoundsException{
+  public boolean move(String p) throws IndexOutOfBoundsException{
+    String f = p.substring(p.length()-1);
+    int i= Integer.parseInt(f);
     if(i<1 || i>8){
       return false;
     }
@@ -374,7 +375,9 @@ public class KnightBoard{
     }
     return false;
   }
-  public boolean remove(int i) throws IndexOutOfBoundsException{
+  public boolean remove(String p) throws IndexOutOfBoundsException{
+    String f = p.substring(p.length()-1);
+    int i= Integer.parseInt(f);
     if(i<1 || i>8){
       return false;
     }
@@ -527,13 +530,13 @@ public class KnightBoard{
     b=orderMoves(knightycor,knightxcor);
     for(int i=0;i<b.size();i++){
       //board[startingRow][startingCol]=counter;
-      if(move(b.get(i).substring(*b.get(i).length()-1),(b.get(i).length()))){
+      if(move(b.get(i))){
         //System.out.println(c);
         if(solveH(knightycor, knightxcor,c+1)){
           //System.out.println(c);
           return true;
           }
-        remove(b.get(i).substring(*b.get(i).length()-1),(b.get(i).length()));
+        remove(b.get(i));
         }
       }
       /*clear();
