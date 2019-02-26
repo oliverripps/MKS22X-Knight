@@ -164,56 +164,81 @@ public class KnightBoard{
     return true;
   }
 
-  public static void Sort(ArrayList<Integer> ary){
+  /*public static void Sort(ArrayList<Integer> ary){
     if(ary.size()!=0){//testing for not being 0
       int current;
       for(int i = 1;i<ary.size();i++){//starting with the first wrong one, loop through
-        current=ary.get(i);//current is the one you want to sort
+        current=ary.get(i).getValue();//current is the one you want to sort
         int l = i-1;//the first one sorted
-        while(l>=0 && current<=ary.get(l)){//while it is still bigger
-          ary.set(l+1,ary.get(l));//shift over
+        while(l>=0 && current<=ary.get(l).getValue()){//while it is still bigger
+          ary.set(l+1,ary.get(l).getValue());//shift over
           l--;
         }
         ary.set(l+1,current);//place
       }
     }
+  }*/
+public static void Sort(ArrayList<Moves> data){
+  if(data.size()!=0){
+  boolean ready= false;//boolean to see if a change was made this round
+  int current;
+  while(!ready){
+    ready=true;
+    for(int i = 0;i<data.size()-1;i++){//looping through each element
+      if(data.get(i).getValue()>data.get(i+1).getValue()){//if they are in the wrong order, switch them
+        current=data.get(i);
+        data.get(i)=data.get(i+1);
+        data.get(i+1)=current;
+        ready=false;//showing a change was made
+      }
+    }
   }
+}
+}
 
   public ArrayList<Integer> orderMoves(int r,int c){
-    ArrayList<Integer> a = new ArrayList<Integer>(0);
+    ArrayList<Moves> a = new ArrayList<Moves>(0);
     int failures=0;
     try{
       if((r-2)>=0 && (r-2)<moves.length && (c+1)>=0 && (c+1)<moves[0].length){
-        int option1=moves[r-2][c+1];
+        int o=moves[r-2][c+1];
+        Moves option1= new Moves(o,"option1");
         a.add(option1);
     }
       if(r-2>=0 && r-2<moves.length && c-1>=0 && c-1<moves[0].length){
-        int option8=moves[r-2][c-1];
+        int o=moves[r-2][c-1];
+        Moves option8= new Moves(o,"option8");
         a.add(option8);
       }
       if(r+2>=0 && r+2<moves.length && c+1>=0 && c+1<moves[0].length){
-        int option4=moves[r+2][c+1];
+        int o=moves[r+2][c+1];
+        Moves option4= new Moves(o,"option4");
         a.add(option4);
       }
       //continue with this
       if(r+2>=0 && r+2<moves.length && c-1>=0 && c-1<moves[0].length){
-        int option5=moves[r+2][c-1];
+        int o=moves[r+2][c-1];
+        Moves option5= new Moves(o,"option5");
         a.add(option5);
     }
       if(r+1>=0 && r+1<moves.length && c+2>=0 && c+2<moves[0].length){
-        int option3 =moves[r+1][c+2];
+        int o=moves[r+1][c+2];
+        Moves option3= new Moves(o,"option3");
         a.add(option3);
 }
       if(r+1>=0 && r+1<moves.length && c-2>=0 && c-2<moves[0].length){
-        int option6 =moves[r+1][c-2];
+        int o=moves[r+1][c-2];
+        Moves option6= new Moves(o,"option6");
         a.add(option6);
 }
       if(r-1>=0 && r-1<moves.length && c+2>=0 && c+2<moves[0].length){
-        int option2=moves[r-1][c+2];
+        int o=moves[r-1][c+2];
+        Moves option2=new Moves(o,"option2");
         a.add(option2);
 }
       if(r-1>=0 && r-1<moves.length && c-2>=0 && c-2<moves[0].length){
-        int option7=moves[r-1][c-2];
+        int o=moves[r-1][c-2];
+        Moves option7= new Moves(o,"option7");
         a.add(option7);
 }
   }
@@ -296,7 +321,7 @@ public class KnightBoard{
         counter++;
         knightycor+=2;
         knightxcor-=1;
-        return true;https://www.mkyong.com/java/java-convert-string-to-int/
+        return true;
       }
 
   }
