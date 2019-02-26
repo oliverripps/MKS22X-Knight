@@ -86,6 +86,48 @@ public class KnightBoard{
     return str;
   }
 
+  public String toStringMoves(){
+    String str="";
+    for(int i=0;i<moves.length;i++){
+      for(int l=0;l<moves[0].length;l++){//for each piece
+        if(moves.length*moves[0].length>=10){
+          if(moves[i][l]>=10){//if queen
+            str+=moves[i][l];
+        }
+          if(moves[i][l]>0 && moves[i][l]<10){
+            str+=" ";
+            str+=moves[i][l];
+        }
+          if(moves[i][l]==0){
+            str+=" _";
+          }
+          if(l<moves[0].length-1){
+            str+=" ";
+        }
+          if(l>=moves[0].length-1){
+            str+="\n";
+        }
+      }
+        else{
+          if(moves[i][l]==0){
+            str+="_";
+          }
+          else{
+            str+=moves[i][l];
+          }
+          if(l<moves[0].length-1){
+            str+=" ";
+        }
+          if(l>=moves[0].length-1){
+            str+="\n";
+        }
+        }
+
+      }
+    }
+    return str;
+  }
+
 
   public boolean place(int x, int y){
     if(x<0 || x>board[0].length-1 || y<0 || y>board.length-1){
