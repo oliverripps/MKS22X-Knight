@@ -162,7 +162,7 @@ public class KnightBoard{
     return true;
   }
 
-  public boolean checkMove(int i){
+  public int orderMoves(int r,int c){
     return true;
   }
 
