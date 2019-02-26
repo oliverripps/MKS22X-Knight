@@ -568,10 +568,19 @@ public static void Sort(ArrayList<Moves> data){
       solveH(startingRow,startingCol,0,1);*/
       return false;
   }
+
+  public String toStringSort(ArrayList<Moves> b){
+    String str="(";
+    for(int i=0;i<b.size();i++){
+      str+=b.get(i).getValue();
+      str+=",";
+    }
+    return str;
+  }
   /*@throws IllegalStateException when the board contains non-zero values.
   @throws IndexOutOfBoundsException when either parameter is negative
  or out of bounds.*/
-  /*public int countSolutions(int startingRow, int startingCol){
+  public int countSolutions(int startingRow, int startingCol){
     return countH(startingRow,startingCol,0);
   }
 
@@ -583,16 +592,17 @@ public static void Sort(ArrayList<Moves> data){
     if(c==0){
       board[knightycor][knightxcor]=counter;
     }
-    for(int i=1;i<9;i++){
-      //board[startingRow][startingCol]=counter;
-      if(move(i)){
+    ArrayList<Moves> b = new ArrayList<Moves>(0);
+    b=orderMoves(knightycor,knightxcor);
+    System.out.println(toStringSort(b));
+    for(int i=0;i<b.size();i++){
+      if(move(b.get(i).getName())){
         solutions+=countH(knightycor, knightxcor,c+1);
           //System.out.println(c);
-        remove(i);
+        remove(b.get(i).getName());
         }
       }
       return solutions;
-  }*/
+  }
 
   }
-  //level is the # of the knight
