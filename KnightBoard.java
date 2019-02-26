@@ -296,7 +296,7 @@ public class KnightBoard{
         counter++;
         knightycor+=2;
         knightxcor-=1;
-        return true;
+        return true;https://www.mkyong.com/java/java-convert-string-to-int/
       }
 
   }
@@ -349,7 +349,7 @@ public class KnightBoard{
     try{
       if(i==6 && board[knightycor+1][knightxcor-2]==0){
         board[knightycor+1][knightxcor-2]=counter+1;
-        counter++;
+        counter++;https://www.mkyong.com/java/java-convert-string-to-int/
         knightycor+=1;
         knightxcor-=2;
         return true;
