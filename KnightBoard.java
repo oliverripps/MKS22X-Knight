@@ -36,16 +36,12 @@ public class KnightBoard{
   }
   private void setupmoves(int r,int c){
     int[][] m = new int[startingRows][startingCols];
-    m[0][0]=2;
-    if(c>1){
-      m[0][c-1]=2;
-    }
-    if(c%2==0){
-      for(int i==1;i<c-1;i++){
-        m[0]
+    for(int i=0;i<m.length;i++){
+      for(int l =0;l<m[0].length;l++){
+        setupmoves(i,l);
       }
     }
-    m[startingRows-0]
+    moves=m;
   }
 
   public String toString(){
@@ -116,8 +112,30 @@ public class KnightBoard{
   }
 
   public boolean checkMove(int i){
+    return true;
   }
 
+  private void setupmoves(int r, int c){
+    int failures=0;
+    try{
+      if(r-2>0 && r-2<moves.length && c+1>0 && c+1<moves[0].length){
+        moves[r-2][c+1]+=1;
+    }
+      if(r-2>0 && r-2<moves.length && c+1>0 && c+1<moves[0].length){
+        moves[r-2][c+1]+=1;
+      if(r-2>0 && r-2<moves.length && c+1>0 && c+1<moves[0].length){
+        moves[r-2][c+1]+=1;
+      }
+      if(r-2>0 && r-2<moves.length && c+1>0 && c+1<moves[0].length){
+        moves[r-2][c+1]+=1;
+    }
+  }
+  }
+    catch(IndexOutOfBoundsException e){
+      failures++;
+    }
+
+  }
   public boolean move(int i) throws IndexOutOfBoundsException{
     if(i<1 || i>8){
       return false;
