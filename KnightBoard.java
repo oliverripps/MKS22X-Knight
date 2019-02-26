@@ -8,6 +8,10 @@ public class KnightBoard{
   int rows;
   int columns;
 
+
+//add in all restrictions from website
+//add comments
+
   public KnightBoard(int startingRows,int startingCols){
     int[][] b = new int[startingRows][startingCols];
     for(int i=0;i<b.length;i++){
