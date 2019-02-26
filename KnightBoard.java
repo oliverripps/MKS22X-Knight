@@ -19,9 +19,7 @@ public class KnightBoard{
         b[i][l]=0;
       }
     }
-    int[][] m = new int[startingRows][startingCols];
-    m[0][0]=2;
-    m[startingRows-0]
+    setupmoves(startingRows,startingCols);
     board=b;
     moves=b;
     jumps=(startingCols*startingRows);
@@ -35,6 +33,19 @@ public class KnightBoard{
     counter=1;
     board=b;
 
+  }
+  private void setupmoves(int r,int c){
+    int[][] m = new int[startingRows][startingCols];
+    m[0][0]=2;
+    if(c>1){
+      m[0][c-1]=2;
+    }
+    if(c%2==0){
+      for(int i==1;i<c-1;i++){
+        m[0]
+      }
+    }
+    m[startingRows-0]
   }
 
   public String toString(){
@@ -106,7 +117,7 @@ public class KnightBoard{
 
   public boolean checkMove(int i){
   }
-  
+
   public boolean move(int i) throws IndexOutOfBoundsException{
     if(i<1 || i>8){
       return false;
