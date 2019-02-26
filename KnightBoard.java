@@ -7,7 +7,6 @@ public class KnightBoard{
   int jumps;
   int rows;
   int columns;
-  int solutions;
 
   public KnightBoard(int startingRows,int startingCols){
     int[][] b = new int[startingRows][startingCols];
@@ -22,7 +21,6 @@ public class KnightBoard{
     rows=startingRows;
     columns=startingCols;
     counter=1;
-    solutions=0;
   }
 
   public void clear(){
@@ -388,16 +386,16 @@ public class KnightBoard{
   }
 
   public int countH(int startingRow, int startingCol, int c){
-    if(c==0){
-      board[knightycor][knightxcor]=counter;
-    }
+    int solutions=0;
     if(c>=jumps-1){
       return 1;
+    }
+    if(c==0){
+      board[knightycor][knightxcor]=counter;
     }
     /*if(board[startingRow][startingCol]!=0){
       return false;
     }*/
-
     for(int i=1;i<9;i++){
       //board[startingRow][startingCol]=counter;
       if(move(i)){
