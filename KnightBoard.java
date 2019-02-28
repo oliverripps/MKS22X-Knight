@@ -537,7 +537,10 @@ public static void Sort(ArrayList<Moves> data){
   @throws IllegalStateException when the board contains non-zero values.
   @throws IndexOutOfBoundsException when either parameter is negative
    or out of bounds.*/
-  public boolean solve(int startingRow, int startingCol){
+  public boolean solve(int startingRow, int startingCol) throws IllegalArguementException{
+    if(startingRow<0 || startingRow>=board[0].length || startingCol<0 || startingCol>=board.length){
+      throw IllegalArguementException();
+    }
     return solveH(startingRow,startingCol,0);
   }
 
@@ -579,12 +582,15 @@ public static void Sort(ArrayList<Moves> data){
     }
     return str;
   }
+  
   /*@throws IllegalStateException when the board contains non-zero values.
   @throws IndexOutOfBoundsException when either parameter is negative
  or out of bounds.*/
-  public int countSolutions(int startingRow, int startingCol){
+  public int countSolutions(int startingRow, int startingCol) throws IllegalArguementException{
+    if(startingRow<0 || startingRow>=board[0].length || startingCol<0 || startingCol>=board.length){
+      throw IllegalArguementException();
+    }
     return countH(startingRow,startingCol,0);
-  }
 
   public int countH(int startingRow, int startingCol, int c){
     knightxcor=startingCol;
