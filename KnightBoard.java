@@ -15,6 +15,9 @@ public class KnightBoard{
 //add comments
 
   public KnightBoard(int startingRows,int startingCols){
+    if(startingRows <= 0 || startingCols <= 0){
+      throw new IllegalArgumentException();
+    }
     int[][] b = new int[startingRows][startingCols];
     for(int i=0;i<b.length;i++){
       for(int l=0;l<b[0].length;l++){
@@ -537,9 +540,12 @@ public static void Sort(ArrayList<Moves> data){
   @throws IllegalStateException when the board contains non-zero values.
   @throws IndexOutOfBoundsException when either parameter is negative
    or out of bounds.*/
-  public boolean solve(int startingRow, int startingCol) throws IllegalArguementException{
-    if(startingRow<0 || startingRow>=board[0].length || startingCol<0 || startingCol>=board.length){
-      throw IllegalArguementException();
+  public boolean solve(int startingRow, int startingCol){
+    if(!isEmpty()){//checks if board is empty
+      throw new IllegalStateException();
+    }
+    if((startingRow < 0 || startingCol < 0) || (startingRow>= board.length || startingCol >= board[0].length)){//checks if starting position is valid
+      throw new IllegalArgumentException();
     }
     return solveH(startingRow,startingCol,0);
   }
@@ -582,15 +588,29 @@ public static void Sort(ArrayList<Moves> data){
     }
     return str;
   }
-  
+
   /*@throws IllegalStateException when the board contains non-zero values.
   @throws IndexOutOfBoundsException when either parameter is negative
  or out of bounds.*/
-  public int countSolutions(int startingRow, int startingCol) throws IllegalArguementException{
-    if(startingRow<0 || startingRow>=board[0].length || startingCol<0 || startingCol>=board.length){
-      throw IllegalArguementException();
-    }
+  public int countSolutions(int startingRow, int startingCol){
+    if(!isEmpty()){
+        throw new IllegalStateException();
+      }
+      if((startingRow < 0 || startingCol < 0) || (startingRow>=board.length || startingCol >= board[0].length)){
+        throw new IllegalArgumentException();
+      }
     return countH(startingRow,startingCol,0);
+}
+  private boolean isEmpty(){
+   for(int i=0;i<board.length;i++){
+     for(int l=0;l<board[i].length;l++){
+       if(board[i][l] != 0){
+         return false;
+       }
+     }
+   }
+   return true;
+ }
 
   public int countH(int startingRow, int startingCol, int c){
     knightxcor=startingCol;
